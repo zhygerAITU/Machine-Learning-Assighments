@@ -16,8 +16,9 @@ figure; % open a new figure window
 %       appear as red crosses. Furthermore, you can make the
 %       markers larger by using plot(..., 'rx', 'MarkerSize', 10);
 
-
-
+plot(x, y, 'rx', 'MarketSize', 10);
+xlabel('Profit 10,000$');
+ylabel('Population in 10,000s');
 
 
 % ============================================================
