@@ -7,10 +7,10 @@
 %  linear exercise. You will need to complete the following functions
 %  in this exericse:
 %
-%     warmUpExercise.m
+%     warmUpExercise.m DONE
 %     plotData.m
-%     gradientDescent.m
-%     computeCost.m
+%     gradientDescent.m DONE
+%     computeCost.m DONE
 %     gradientDescentMulti.m
 %     computeCostMulti.m
 %     featureNormalize.m
@@ -44,7 +44,7 @@ m = length(y); % number of training examples
 
 % Plot Data
 % Note: You have to complete the code in plotData.m
-plotData(X, y);
+plotData(X, y); # setenv("GNUTERM","qt")
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
@@ -83,7 +83,7 @@ fprintf('Expected theta values (approx)\n');
 fprintf(' -3.6303\n  1.1664\n\n');
 
 % Plot the linear fit
-hold on; % keep previous plot visible
+hold on; % keep previous plot visiblet
 plot(X(:,2), X*theta, '-')
 legend('Training data', 'Linear regression')
 hold off % don't overlay any more plots on this figure
