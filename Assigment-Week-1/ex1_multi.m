@@ -10,10 +10,10 @@
 %  You will need to complete the following functions in this 
 %  exericse:
 %
-%     warmUpExercise.m
-%     plotData.m
-%     gradientDescent.m
-%     computeCost.m
+%     warmUpExercise.m done
+%     plotData.m DOne
+%     gradientDescent.m DONE
+%     computeCost.m DONE
 %     gradientDescentMulti.m
 %     computeCostMulti.m
 %     featureNormalize.m
