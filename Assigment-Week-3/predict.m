@@ -22,11 +22,17 @@ p = zeros(size(X, 1), 1);
 %
 
 
+X = [ones(m, 1) X];
 
+A = sigmoid(X * transpose(Theta1));
 
+A = [ones(m, 1) A];
 
+A = sigmoid(A * transpose(Theta2));
 
+[mx, id] = max(A, [], 2);
 
+p = id;
 
 
 % =========================================================================

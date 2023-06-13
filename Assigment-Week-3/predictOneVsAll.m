@@ -31,7 +31,6 @@ X = [ones(m, 1) X];
 %       
 
 A = X * transpose(all_theta);
-
 [mx, id] = max(A, [], 2);
 
 p = id;
