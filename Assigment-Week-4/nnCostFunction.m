@@ -93,6 +93,26 @@ J = J / m;
 
 % -------------------------------------------------------------
 
+ans = 0;
+
+for j = 1:size(Theta1, 1),
+
+    for k = 2:size(Theta1, 2),
+
+        ans = ans + Theta1(j, k) ^ 2;
+    end;
+end;
+
+for j = 1:size(Theta2, 1),
+    for k = 2:size(Theta2, 2),
+        ans = ans + Theta2(j, k) ^ 2;
+    end;
+end;
+
+ans = lambda / (2 * m) * ans;
+
+J = J + ans;
+
 % =========================================================================
 
 % Unroll gradients
