@@ -113,6 +113,34 @@ ans = lambda / (2 * m) * ans;
 
 J = J + ans;
 
+for t = 1:m, 
+
+    %Step 1
+    a1 = X(t);
+    z2 = a1 * transpose(Theta1);
+    a2 = sigmoid(z2);
+    a2 = [ones(1, 1) a2];
+    z3 = a2 * transpose(Theta2);
+    a3 = sigmoid(z3);
+
+    % Step 2
+
+    d3 = a3 - y(t);
+    
+    %  Step 3
+
+    d2 = transpose(Theta2) * d3 .* sigmoidGradient(z2);
+
+    % Step 4
+
+    Theta1_grad = Theta1_grad + d2 * transpose(a1);
+    Theta2_grad = Theta1_grad + d3 * transpose(a2);
+end;
+
+
+    
+    
+
 % =========================================================================
 
 % Unroll gradients
