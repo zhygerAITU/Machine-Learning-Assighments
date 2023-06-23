@@ -30,10 +30,6 @@ J = 0;
 Theta1_grad = zeros(size(Theta1));
 Theta2_grad = zeros(size(Theta2));
 
-
-Theta1_tri = zeros(size(Theta1, 1) + 1, size(Theta1, 2) );
-Theta2_tri = zeros(size(Theta2, 1), size(Theta2, 2) );
-
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
 %               following parts.
@@ -127,6 +123,10 @@ delta2 = transpose(d3) * a2;
 Theta1_grad = delta1 ./ m;
 Theta2_grad = delta2 ./ m;
 
+size(delta1)
+size(delta2)
+size(Theta1_grad)
+size(Theta2_grad)
 % =========================================================================
 
 % Unroll gradients
