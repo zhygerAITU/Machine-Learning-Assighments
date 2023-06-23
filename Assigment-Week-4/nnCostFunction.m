@@ -30,6 +30,10 @@ J = 0;
 Theta1_grad = zeros(size(Theta1));
 Theta2_grad = zeros(size(Theta2));
 
+
+Theta1_tri = zeros(size(Theta1, 1) + 1, size(Theta1, 2) );
+Theta2_tri = zeros(size(Theta2, 1), size(Theta2, 2) );
+
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
 %               following parts.
@@ -113,33 +117,15 @@ ans = lambda / (2 * m) * ans;
 
 J = J + ans;
 
-for t = 1:m, 
 
-    %Step 1
-    a1 = X(t);
-    z2 = a1 * transpose(Theta1);
-    a2 = sigmoid(z2);
-    a2 = [ones(1, 1) a2];
-    z3 = a2 * transpose(Theta2);
-    a3 = sigmoid(z3);
+d3 = a3 - y;
+d2 = d3 * Theta2(:, 2:end) .* sigmoidGradient(z2);
 
-    % Step 2
+delta1 = transpose(d2) * X;
+delta2 = transpose(d3) * a2;
 
-    d3 = a3 - y(t);
-    
-    %  Step 3
-
-    d2 = transpose(Theta2) * d3 .* sigmoidGradient(z2);
-
-    % Step 4
-
-    Theta1_grad = Theta1_grad + d2 * transpose(a1);
-    Theta2_grad = Theta1_grad + d3 * transpose(a2);
-end;
-
-
-    
-    
+Theta1_grad = delta1 ./ m;
+Theta2_grad = delta2 ./ m;
 
 % =========================================================================
 
