@@ -117,16 +117,26 @@ J = J + ans;
 d3 = a3 - y;
 d2 = d3 * Theta2(:, 2:end) .* sigmoidGradient(z2);
 
-delta1 = transpose(d2) * X;
+delta1 = transpose(d2) * a1;
 delta2 = transpose(d3) * a2;
 
-Theta1_grad = delta1 ./ m;
-Theta2_grad = delta2 ./ m;
+theta1 = Theta1;
+theta2 = Theta2;
 
-size(delta1)
-size(delta2)
-size(Theta1_grad)
-size(Theta2_grad)
+theta1(:, 1) = 0;
+theta2(:, 1) = 0;
+
+Theta1_grad = (delta1 + lambda * theta1) ./ m;
+Theta2_grad = (delta2 + lambda * theta2) ./ m;
+
+size(Theta1); #25x401
+size(delta1); #25x400
+size(Theta1_grad); #25x400
+
+size(Theta2); #10x26
+size(delta2); #10x26
+size(Theta2_grad); #10x26
+
 % =========================================================================
 
 % Unroll gradients
