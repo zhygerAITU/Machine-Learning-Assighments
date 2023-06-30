@@ -16,10 +16,16 @@ sim = 0;
 %
 %
 
+sum = 0;
+for i = 1:length(x1),
+    for j = 1:length(x2),
+        sum = sum + x1(i) - x2(j);
+    end;
+end;
 
+sum = sum ^ 2;
 
-
-
+sim = exp(-sum / (2 * sigma^2));
 
 % =============================================================
     
