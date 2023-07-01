@@ -54,6 +54,9 @@ fprintf('\n==== Processed Email ====\n\n');
 % Process file
 l = 0;
 
+% size(email_contents) 1 x 369
+% size(vocabList) 1899 x 1 
+
 while ~isempty(email_contents)
 
     % Tokenize and also get rid of any punctuation
@@ -98,9 +101,12 @@ while ~isempty(email_contents)
     %
 
 
+    for j = 1:length(vocabList),
 
-
-
+        if strcmp(str, vocabList(j, 1)) == 1,
+            word_indices = [word_indices ; j];
+        end;
+    end;
 
 
 
