@@ -11,6 +11,9 @@ function [C, sigma] = dataset3Params(X, y, Xval, yval)
 C = 1;
 sigma = 0.3;
 
+sigma_vec = [0.01,0.03,0.1,0.3,1,3,10,30];
+C_vec = [0.01,0.03,0.1,0.3,1,3,10,30];
+
 % ====================== YOUR CODE HERE ======================
 % Instructions: Fill in this function to return the optimal C and sigma
 %               learning parameters found using the cross validation set.
@@ -24,10 +27,39 @@ sigma = 0.3;
 %
 
 
+model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+
+predictions = svmPredict(model, Xval);
+
+ans = mean(double(predictions ~= yval));
 
 
+% figure;
+% visualizeBoundary(X, y, model);
+% figure;
+% visualizeBoundary(Xval, yval, model);
 
+for i = 1:length(C_vec),
+    for j = 1:length(sigma_vec),
 
+        model= svmTrain(X, y, C_vec(i), @(x1, x2) gaussianKernel(x1, x2, sigma_vec(j)));
+        predictions = svmPredict(model, Xval);
+        pred = mean(double(predictions ~= yval));
+
+        if ans > pred,
+            ans = pred;
+            C = C_vec(i);
+            sigma = sigma_vec(j);
+        end;
+
+    end;
+end;
+
+% ans1
+% ans2
+
+% C
+% sigma
 
 % =========================================================================
 
