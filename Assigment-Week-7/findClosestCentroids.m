@@ -10,6 +10,9 @@ K = size(centroids, 1);
 
 % You need to return the following variables correctly.
 idx = zeros(size(X,1), 1);
+mn = zeros(size(X, 1), 1);
+m = size(X, 1);
+n = size(X, 2);
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Go over every example, find its closest centroid, and store
@@ -21,8 +24,40 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+for i = 1:m,
 
 
+    for j = 1:K,
+
+        sm = 0;
+        for q = 1:n,
+
+            sm = sm + (X(i, q) - centroids(j, q)) ^ 2;
+
+        end;
+
+        sm = sqrt(sm);
+
+        if j == 1,
+
+            mn(i, 1) = sm;
+            idx(i, 1) = j;
+        end;
+
+        if j != 1,
+
+            if mn(i, 1) > sm,
+
+                mn(i, 1) = sm;
+                idx(i, 1) = j;
+
+            end;    
+
+        end;
+
+    end;
+
+end;
 
 
 
